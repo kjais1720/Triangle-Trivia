@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>triangle trivia</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header>
+        <h1>fun with triangles</h1>
+        <nav>
+          <a href="../index.html">Is Triangle?</a>
+          <a href="../index.html">Quiz</a>
+          <a href="./hypotenuse.html">Hypotenuse</a>
+          <a href="#">Area of Triangle</a>
+        </nav>
+    </header>
+
+    <main class="calculate-area-main">
+        <h1>Calculate Area of a triangle</h1>
+        <!-- <form id="calculate-area"> -->
+          <label class="input-label" for="first-side">
+            <p>Enter first side of a triangle</p>
+            <input class="input-text" required="" type="number" id="first-side">
+          </label>
+          <label class="input-label" for="second-side">
+            <p>Enter second side of a triangle</p>
+            <input class="input-text" required="" type="number" id="second-side">
+          </label>
+          <label class="input-label" for="third-side">
+            <p>Enter third side of a triangle</p>
+            <input class="input-text" required="" type="number" id="third-side">
+          </label>
+          <button class="btn-check" onclick="calcArea()">Calculate</button>
+        <!-- </form> -->
+        <h2 class="output calculate-area-output" id="output"></h2>
+      </main>
+
+
+    <script src="../index.js"></script>
+</body>
+</html>

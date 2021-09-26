@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Megrim&family=Montserrat+Alternates&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: url(./Colored\ Patterns.svg);
+    background-size: contain;
+    background-position-y: -40%;
+    background-attachment: fixed;
+
+}
+
+header{
+    min-height: 10vh;
+    background-color: #008080;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 15px 30px;
+}
+
+nav{
+    display: flex;
+    gap: 20px;
+}
+
+nav a{
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    padding: 10px 0;
+}
+
+nav a::after{
+    content: '';
+    position: absolute;
+    height: 2px;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background-color: #fff;
+    transition: all ease 0.3s;
+}
+
+nav a:hover::after{
+    left: 0;
+    right: 0;
+}
+
+header h1{
+    font-weight: 900;
+    font-family: 'Megrim',serif;
+    color: #fff;
+}
+
+.output{
+    font-family: 'Megrim',serif;
+}
+
+main{
+    padding: 25px;
+    margin: 10vh 15vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background: rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.5);
+}
+
+@media screen and (max-width:600px){
+    main{
+        padding: 15px;
+        margin: 10vh 5vw;
+    }    
+}
+
+main >h3{
+    margin-top: 20px;
+}
+
+main h1{
+    font-size: 2.5rem;
+    color: teal;
+}
+
+form{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.question-container *{
+    margin-top: 30px;
+}
+
+p{
+    color: teal;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+label{
+    margin: 0 20px;
+}
+
+.btn-check{
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: teal;
+    color: white;    
+    border: none;
+    outline: none;
+    margin-top: 30px;
+}
+
+.btn-check:is(:active,:focus){
+    box-shadow: 0px 0px 0px 3px hsla(180, 100%, 25%,0.4);
+}
+
+.btn-check:active{
+    transform: scale(0.96);
+
+}
+
+main.angles-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-control label{
+    font-size: 1.2rem;
+    color: black;
+}
+
+input[type="number"]{
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 2px #008080;
+}
+
+input[type="number"]:is(:focus, :active){
+    box-shadow: 0px 0px 0px 3px hsla(180, 100%, 25%,0.4);
+    outline: none;
+}
+
+main.angles-main .btn-check{
+    font-family: 1.2rem;
+}
