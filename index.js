@@ -37,20 +37,26 @@ labels.forEach((label)=>{
 function quizResult() {
    output.innerText = `Your score is ${res}`  
 }
-
 function validateTriangle(){
     const angles = document.querySelectorAll('.angle-input');
     var angleSum;
     angleSum = 0;
-
+    let outputText = "";
+    
     angles.forEach((angle)=>{
         angleSum += Number(angle.value);
+        if(Number(angle.value == 0)){
+            outputText = `This is not a valid triangle `;
+        }
     });
     if(angleSum === 180){
-        output.innerText = "It is a valid triangle";
+        if(outputText==''){
+            outputText = "It is a valid triangle";
+        }
     } else{
-        output.innerText = "It is not a valid triangle";
+        outputText = "It is not a valid triangle";
     }
+    output.innerText = outputText;
 }
 
 function calcHypo(){
