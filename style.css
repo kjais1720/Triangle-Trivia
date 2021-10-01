@@ -58,6 +58,17 @@ header h1{
     color: #fff;
 }
 
+button.toggle-nav{
+    border: none;
+    font-size: 1.5rem;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    position: relative;
+    z-index: 100;
+}
+
 .output{
     font-family: 'Megrim',serif;
 }
@@ -81,6 +92,47 @@ main{
         padding: 15px;
         margin: 10vh 5vw;
     }    
+
+    nav{
+        position: absolute;
+        top: -100%;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: column;
+        width: fit-content;
+        background: #fff;
+        border-radius: 10px;
+        padding: 30px 50px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px 0px hsla(180, 100%, 25%,0.4);
+        transition: all ease 0.5s;
+        z-index: 99;
+    }
+
+    nav a{
+        color: #008080;
+    }
+
+    nav.show{
+        top: 0;
+    }
+
+    button.toggle-nav{
+        display: block;
+    }
+
+    button.toggle-nav .fa-times{
+        display: none;
+    }
+
+    nav.show button.toggle-nav .fa-times{
+        display: block;
+    }
+    nav.show button.toggle-nav .fa-bars{
+        display: none;
+    }
+
+
 }
 
 main >h3{
@@ -167,3 +219,48 @@ input[type="number"]:is(:focus, :active){
 main.angles-main .btn-check{
     font-family: 1.2rem;
 }
+
+footer{
+    min-height: 25vh;
+    position: relative;
+    font-family: 'Montseerrat Alternates',serif;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+}
+.footer-links{
+    display: flex;
+    gap: 5vw;
+    justify-content: center;
+    align-items: center;
+    margin: 2% auto;
+}
+footer a{
+    text-decoration: none;
+    color: #008080;
+    font-weight: 800;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    transition: all ease 0.5s;
+}
+
+footer a:hover{
+    transform: scale(1.1);
+    color: #0f1657;
+}
+
+#copyright{
+    font-size: 1rem;
+}
+
+#copyright a{
+    font-size: 1rem;
+    text-decoration: none;
+    color: #0f1657;
+}
+
+#copyright a:hover{
+    transform: scale(1.5);
+    color: #008080;
+}
+
