@@ -101,7 +101,7 @@ function calcArea(){
     output.innerText = `The area of the triangle is ${area.toFixed(2)}`;
     } else {
         if(!areSidesPositive) output.innerText = "Sides must be positive & Non-negative";
-        else output.innerText = `Enter valid side lengths, such that the sum of 2 sides is always bigger than the third side`;
+        else output.innerText = `The entered side lengths cannot form a triangle.`;
     }
 
 }
