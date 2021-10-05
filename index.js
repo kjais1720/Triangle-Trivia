@@ -25,6 +25,7 @@ const answers = {
 var res=0;
 var clickedQuestionNum;
 const correctlyAnsweredQuestions = [];
+
 labels.forEach((label)=>{
     label.addEventListener('click', function(e) {
         clickedQuestionNum = label.children[0].name;
@@ -46,8 +47,8 @@ function quizResult() {
    output.innerText = `Your score is ${res}`  
 }
 
-function isInputPositive(value){
-    if (Number(value)<0) return false;
+function isInputPositiveAndNonZero(value){
+    if (Number(value)<=0) return false;
     else return true;
 }
 
@@ -57,11 +58,15 @@ function validateTriangle(){
     angleSum = 0;
     let outputText = "";
 
-    angles.forEach((angle)=>{
+    angles.forEach(angle =>{
+        if(angle.value!=0){
             angleSum += Number(angle.value);
+        } else{
+            outputText = "It is not a valid triangle."
+        }
     });
 
-    if(angleSum === 180){
+    if(angleSum === 180 && outputText === ''){
         outputText = "It is a valid triangle";
     } else{
         outputText = "It is not a valid triangle";
@@ -73,10 +78,10 @@ function calcHypo(){
     const sides = document.querySelectorAll('.side-input');
     var hypotenuse;
 
-    if(isInputPositive(sides[0].value) && isInputPositive(sides[1].value)){
+    if(isInputPositiveAndNonZero(sides[0].value) && isInputPositiveAndNonZero(sides[1].value)){
         hypotenuse = Math.sqrt(Number(sides[0].value**2) + Number(sides[1].value**2));
         output.innerText = "The hypotenuse is : "+hypotenuse.toFixed(4);
-    } else output.innerText = "Value of sides must be positive";
+    } else output.innerText = "Value of sides must be positive & non-zero";
 }
 
 function calcArea(){
@@ -85,29 +90,31 @@ function calcArea(){
     
     let areSidesPositive = true;
     for(const n of [a,b,c]){
-        if(!isInputPositive(n)){
+        if(!isInputPositiveAndNonZero(n)){
             areSidesPositive = false;
-            output.innerText = "Sides must be positive";
         }
     }
     
     if(validateSides(a,b,c) && areSidesPositive){
     const sp = (a+b+c)/2;
     const area = Math.sqrt(sp*(sp-a)*(sp-b)*(sp-c));
-    output.innerText = `The area of the triangle is ${area.toFixed(4)}`;
+    output.innerText = `The area of the triangle is ${area.toFixed(2)}`;
     } else {
-        if(!areSidesPositive) output.innerText = "Sides must be positive";
+        if(!areSidesPositive) output.innerText = "Sides must be positive & Non-negative";
         else output.innerText = `Enter valid side lengths, such that the sum of 2 sides is always bigger than the third side`;
     }
 
 }
 
-function validateSides(a,b,c){
+
+// To validate whether the input sides will form a valid triangle or not.
+//In a triangle, the sum of any two sides will always be bigger than the third side.
+function validateSides(a,b,c){ 
     const largestSide = Math.max(a,b,c);
     const smallestSide = Math.min(a,b,c);
     
     for(const i of [a,b,c]){
-        if(i != smallestSide && i != largestSide){
+        if(i != smallestSide && i != largestSide){ //The side which is neither the biggest nor the smallest
             if ((i+smallestSide) > largestSide) return true;
             else return false;
         }
