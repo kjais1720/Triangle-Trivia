@@ -4,8 +4,6 @@ const navToggle = document.querySelector('.toggle-nav');
 navToggle.addEventListener('click',()=>{
     nav.classList.toggle('show');
 })
-
-
 const labels = document.querySelectorAll('label');
 const output = document.querySelector('.output')
 
@@ -26,7 +24,7 @@ var res=0;
 var clickedQuestionNum;
 const correctlyAnsweredQuestions = [];
 
-labels.forEach((label)=>{
+labels.forEach(label => {
     label.addEventListener('click', function(e) {
         clickedQuestionNum = label.children[0].name;
         if(label.children[0].value == answers[clickedQuestionNum]){
@@ -43,38 +41,30 @@ labels.forEach((label)=>{
 })
 
 
-function quizResult() {
+let quizResult = () => {
    output.innerText = `Your score is ${res}`  
 }
 
-function isInputPositiveAndNonZero(value){
-    if (Number(value)<=0) return false;
-    else return true;
-}
+let isInputPositiveAndNonZero = value => Number(value) >0 ? true : false;
 
-function validateTriangle(){
+
+let validateTriangle = () =>{
     const angles = document.querySelectorAll('.angle-input');
-    var angleSum;
-    angleSum = 0;
+    let angleSum = 0;
     let outputText = "";
 
     angles.forEach(angle =>{
-        if(angle.value!=0){
-            angleSum += Number(angle.value);
-        } else{
-            outputText = "It is not a valid triangle."
-        }
+        if(angle.value!=0) angleSum += Number(angle.value);
+        else outputText = "It is not a valid triangle."
     });
 
-    if(angleSum === 180 && outputText === ''){
-        outputText = "It is a valid triangle";
-    } else{
-        outputText = "It is not a valid triangle";
-    }
+    if(angleSum === 180 && outputText === '') outputText = "It is a valid triangle";
+    else outputText = "It is not a valid triangle";
+    
     output.innerText = outputText;
 }
 
-function calcHypo(){
+let calcHypo = () => { 
     const sides = document.querySelectorAll('.side-input');
     var hypotenuse;
 
@@ -84,15 +74,15 @@ function calcHypo(){
     } else output.innerText = "Value of sides must be positive & non-zero";
 }
 
-function calcArea(){
-    const sides = document.querySelectorAll('.input-text');
-    const [a,b,c] = [Number(sides[0].value), Number(sides[1].value), Number(sides[2].value)];
+let calcArea = () => {
+    let sides = document.querySelectorAll('.input-text');
+    sides = [...sides];
+    const [a,b,c] = sides.map(side => Number(side.value))
+    // const [a,b,c] = [Number(sides[0].value), Number(sides[1].value), Number(sides[2].value)];
     
     let areSidesPositive = true;
     for(const n of [a,b,c]){
-        if(!isInputPositiveAndNonZero(n)){
-            areSidesPositive = false;
-        }
+        !isInputPositiveAndNonZero(n) && (areSidesPositive = false);
     }
     
     if(validateSides(a,b,c) && areSidesPositive){
