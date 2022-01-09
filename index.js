@@ -20,8 +20,8 @@ const answers = {
     'question10': '3'
 }
 
-var res=0;
-var clickedQuestionNum;
+let res=0;
+let clickedQuestionNum;
 const correctlyAnsweredQuestions = [];
 
 labels.forEach(label => {
@@ -66,7 +66,7 @@ let validateTriangle = () =>{
 
 let calcHypo = () => { 
     const sides = document.querySelectorAll('.side-input');
-    var hypotenuse;
+    let hypotenuse;
 
     if(isInputPositiveAndNonZero(sides[0].value) && isInputPositiveAndNonZero(sides[1].value)){
         hypotenuse = Math.sqrt(Number(sides[0].value**2) + Number(sides[1].value**2));
@@ -100,13 +100,13 @@ let calcArea = () => {
 // To validate whether the input sides will form a valid triangle or not.
 //In a triangle, the sum of any two sides will always be bigger than the third side.
 function validateSides(a,b,c){ 
-    const largestSide = Math.max(a,b,c);
-    const smallestSide = Math.min(a,b,c);
+    let sides = [a,b,c];
+    const largestSideIndex = sides.indexOf(Math.max(a,b,c));
+    const smallestSideIndex = sides.indexOf(Math.min(a,b,c));
     
-    for(const i of [a,b,c]){
-        if(i != smallestSide && i != largestSide){ //The side which is neither the biggest nor the smallest
-            if ((i+smallestSide) > largestSide) return true;
-            else return false;
+    for(let i = 0; i<sides.length; i++){
+        if(i != smallestSideIndex && i != largestSideIndex){ //The side which is neither the biggest nor the smallest
+            return((i+sides[smallestSideIndex]) > largestSideIndex);
         }
     }
 }
