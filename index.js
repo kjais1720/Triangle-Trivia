@@ -106,7 +106,7 @@ function validateSides(a,b,c){
     
     for(let i = 0; i<sides.length; i++){
         if(i != smallestSideIndex && i != largestSideIndex){ //The side which is neither the biggest nor the smallest
-            return((i+sides[smallestSideIndex]) > largestSideIndex);
+            return((sides[i]+sides[smallestSideIndex]) > sides[largestSideIndex]);
         }
     }
 }
